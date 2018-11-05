@@ -40,6 +40,7 @@ Here: three functions
 ## `re.findall`
 
 ```
+$ pydoc re.findall
 Help on function findall in re:
 
 re.findall = findall(pattern, string, flags=0)
@@ -53,9 +54,9 @@ re.findall = findall(pattern, string, flags=0)
 
 ```
 
-* Returns a list of matching substrings
+* `re.findall` returns a list of matching substrings
 
-```python
+```
 >>> import re
 >>> re.findall('tic', 'tac toc')
 []
@@ -65,6 +66,8 @@ re.findall = findall(pattern, string, flags=0)
 ['tac', 'toc']
 
 ```
+
+Try this out in https://regex101.com
 
 ---
 Here `[]` defines a character class
@@ -82,13 +85,22 @@ There are some macros for common classes
 * `\w` single word character, equivalent to `[_0-9a-zA_Z]`
 * `\s` single space or tab
 
-```python
+```
 >>> re.findall('\d', 'Agent 007')
 ['0', '0', '7']
+
+```
+```
 >>> re.findall('[^\d]', 'Agent 007')
 ['A', 'g', 'e', 'n', 't', ' ']
+
+```
+```
 >>> re.findall('\w', 'Agent 007')
 ['A', 'g', 'e', 'n', 't', '0', '0', '7']
+
+```
+```
 >>> re.findall('[^\w]', 'Agent 007')
 [' ']
 
@@ -103,11 +115,17 @@ Specifying a count: `{}`
 * `*`: any number
 * `+`: any number greater than zero
 
-```python
+```
 >>> re.findall('\d{2}', 'Agent 007')
 ['00']
+
+```
+```
 >>> re.findall('\d{1,3}', 'Agent 007')
 ['007']
+
+```
+```
 >>> re.findall('\d+', 'Agent 007')
 ['007']
 
@@ -141,6 +159,7 @@ Example: find singular and plural occurances of a word
 ### The `re.search` function
 
 ```
+$ pydoc re.search
 Help on function search in re:
 
 re.search = search(pattern, string, flags=0)
@@ -159,8 +178,14 @@ Example
 ```
 >>> re.search('([.\d]+) kcal', 'Energy: 1.23 kcal').group()
 '1.23 kcal'
+
+```
+```
 >>> re.search('([.\d]+) kcal', 'Energy: 1.23 kcal').group(1)
 '1.23'
+
+```
+```
 >>> re.search('([.\d]+) kcal', 'Energy: 1.23 kcal').groups()
 ('1.23',)
 
@@ -190,6 +215,7 @@ Optional matches
 * Make substitutions based on the result of pattern matches
 
 ```
+$ pydoc re.sub
 Help on function sub in re:
 
 re.sub = sub(pattern, repl, string, count=0, flags=0)
@@ -214,17 +240,29 @@ Examples:
 
 ---
 
-For the final task:
+### String formatting
 
-String substitution in Python: combining different objects to string output
+* For the final task
+* Converting objects of any type to string output
 
-```python
->>> two_numbers = (2, 4)
->>> "Two numbers: %d and %d" % two_numbers
+C-style
+
+```
+>>> x = 2
+>>> y = 4
+>>> "Two numbers: %d and %d" % (x, y)
 'Two numbers: 2 and 4'
->>> "Two numbers: {0[0]} and {0[1]}".format(two_numbers)
+
+```
+Using the `format` method defined for strings
+```
+>>> "Two numbers: {} and {}".format(x, y)
 'Two numbers: 2 and 4'
->>> f"Two numbers: {two_numbers[0]} and {two_numbers[1]}" #Python 3.6 only
+
+```
+Using f-strings (Python >= 3.6)
+```
+>>> f"Two numbers: {x} and {y}" 
 'Two numbers: 2 and 4'
 
 ```
