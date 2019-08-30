@@ -1,16 +1,27 @@
+name: cover
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 # Regular expressions
 
-## BB2241
-
+BB2241
 
 ---
 
 layout: false
 
+* [Regular expressions](#cover)
+    + [Regular expressions](#regex)
+    + [In Python](#re_module)
+    + [Three `re` functions](#findall)
+        - [The `re.findall` function](#findall)
+        - [The `re.search` function](#search)
+        - [The `re.sub` function](#sub)
+    + [String formatting](#formatting)
+    + [Summary](#summary)
 
+---
+name: regex
 ## Regular expressions
 
 * A pattern matching language for searching replacing
@@ -19,6 +30,7 @@ layout: false
 
 
 ---
+name: re_module
 
 ## In Python
 
@@ -36,8 +48,11 @@ Here: three functions
 
 
 ---
+name: findall
 
-## `re.findall`
+## Three `re` functions
+
+### The `re.findall` function
 
 ```
 $ pydoc re.findall
@@ -70,6 +85,7 @@ re.findall = findall(pattern, string, flags=0)
 Try this out in https://regex101.com
 
 ---
+
 Here `[]` defines a character class
 
 Examples:
@@ -154,6 +170,7 @@ Example: find singular and plural occurances of a word
 ```
 
 ---
+name: search
 
 
 ### The `re.search` function
@@ -191,12 +208,12 @@ Example
 
 ```
 
+---
 Here
 
 * `+`: one or more of the previous character (digit or dot)
 
 
----
 
 Optional matches
 
@@ -209,6 +226,7 @@ Optional matches
 ```
 
 ---
+name: sub
 
 ### The `re.sub` function
 
@@ -239,8 +257,9 @@ Examples:
 ```
 
 ---
+name: formatting
 
-### String formatting
+## String formatting
 
 * For the final task
 * Converting objects of any type to string output
@@ -272,6 +291,7 @@ resource
 
 
 ---
+name: summary
 
 ## Summary
 
