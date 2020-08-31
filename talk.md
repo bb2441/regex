@@ -102,22 +102,22 @@ There are some macros for common classes
 * `\s` single space or tab
 
 ```
->>> re.findall('\d', 'Agent 007')
+>>> re.findall(r'\d', 'Agent 007')
 ['0', '0', '7']
 
 ```
 ```
->>> re.findall('[^\d]', 'Agent 007')
+>>> re.findall(r'[^\d]', 'Agent 007')
 ['A', 'g', 'e', 'n', 't', ' ']
 
 ```
 ```
->>> re.findall('\w', 'Agent 007')
+>>> re.findall(r'\w', 'Agent 007')
 ['A', 'g', 'e', 'n', 't', '0', '0', '7']
 
 ```
 ```
->>> re.findall('[^\w]', 'Agent 007')
+>>> re.findall(r'[^\w]', 'Agent 007')
 [' ']
 
 ```
@@ -132,17 +132,17 @@ Specifying a count: `{}`
 * `+`: any number greater than zero
 
 ```
->>> re.findall('\d{2}', 'Agent 007')
+>>> re.findall(r'\d{2}', 'Agent 007')
 ['00']
 
 ```
 ```
->>> re.findall('\d{1,3}', 'Agent 007')
+>>> re.findall(r'\d{1,3}', 'Agent 007')
 ['007']
 
 ```
 ```
->>> re.findall('\d+', 'Agent 007')
+>>> re.findall(r'\d+', 'Agent 007')
 ['007']
 
 ```
@@ -164,7 +164,7 @@ Specifying an optional character
 Example: find singular and plural occurances of a word
 
 ```python
->>> re.findall('eggs?', "Don't put all eggs in one basket egghead")
+>>> re.findall(r'eggs?', "Don't put all eggs in one basket egghead")
 ['eggs', 'egg']
 
 ```
@@ -193,17 +193,17 @@ re.search = search(pattern, string, flags=0)
 Example
 
 ```
->>> re.search('([.\d]+) kcal', 'Energy: 1.23 kcal').group()
+>>> re.search(r'([.\d]+) kcal', 'Energy: 1.23 kcal').group()
 '1.23 kcal'
 
 ```
 ```
->>> re.search('([.\d]+) kcal', 'Energy: 1.23 kcal').group(1)
+>>> re.search(r'([.\d]+) kcal', 'Energy: 1.23 kcal').group(1)
 '1.23'
 
 ```
 ```
->>> re.search('([.\d]+) kcal', 'Energy: 1.23 kcal').groups()
+>>> re.search(r'([.\d]+) kcal', 'Energy: 1.23 kcal').groups()
 ('1.23',)
 
 ```
@@ -220,7 +220,7 @@ Optional matches
 * `|` has the meaning of logical OR in matches
 
 ```
->>> re.findall('cat|dog', 'raining cats and dogs')
+>>> re.findall(r'cat|dog', 'raining cats and dogs')
 ['cat', 'dog']
 
 ```
