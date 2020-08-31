@@ -299,6 +299,8 @@ name: summary
 * Predifined classes `\s` (white space), `\w` (alphanumemric), `\d` (digit)
 * Modifiers `^` (not), `+` (one or more), `*` (zero or more), `?` (zero or
 * one), `|` (or)
+* The default behaviour of a quantifier is to match as much as possible, a '?'
+  after a quantifier matches the minimum
 * Count: `{n}` (repeated `n` times)
 * `()` grouping matches for back referencing, grouped matches are referenced with `\1\, \2...`
 

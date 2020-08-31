@@ -241,22 +241,22 @@ There are some macros for common classes
 * `\s` single space or tab
 
 ```
-&gt;&gt;&gt; re.findall(&#39;\d&#39;, &#39;Agent 007&#39;)
+&gt;&gt;&gt; re.findall(r&#39;\d&#39;, &#39;Agent 007&#39;)
 [&#39;0&#39;, &#39;0&#39;, &#39;7&#39;]
 
 ```
 ```
-&gt;&gt;&gt; re.findall(&#39;[^\d]&#39;, &#39;Agent 007&#39;)
+&gt;&gt;&gt; re.findall(r&#39;[^\d]&#39;, &#39;Agent 007&#39;)
 [&#39;A&#39;, &#39;g&#39;, &#39;e&#39;, &#39;n&#39;, &#39;t&#39;, &#39; &#39;]
 
 ```
 ```
-&gt;&gt;&gt; re.findall(&#39;\w&#39;, &#39;Agent 007&#39;)
+&gt;&gt;&gt; re.findall(r&#39;\w&#39;, &#39;Agent 007&#39;)
 [&#39;A&#39;, &#39;g&#39;, &#39;e&#39;, &#39;n&#39;, &#39;t&#39;, &#39;0&#39;, &#39;0&#39;, &#39;7&#39;]
 
 ```
 ```
-&gt;&gt;&gt; re.findall(&#39;[^\w]&#39;, &#39;Agent 007&#39;)
+&gt;&gt;&gt; re.findall(r&#39;[^\w]&#39;, &#39;Agent 007&#39;)
 [&#39; &#39;]
 
 ```
@@ -271,17 +271,17 @@ Specifying a count: `{}`
 * `+`: any number greater than zero
 
 ```
-&gt;&gt;&gt; re.findall(&#39;\d{2}&#39;, &#39;Agent 007&#39;)
+&gt;&gt;&gt; re.findall(r&#39;\d{2}&#39;, &#39;Agent 007&#39;)
 [&#39;00&#39;]
 
 ```
 ```
-&gt;&gt;&gt; re.findall(&#39;\d{1,3}&#39;, &#39;Agent 007&#39;)
+&gt;&gt;&gt; re.findall(r&#39;\d{1,3}&#39;, &#39;Agent 007&#39;)
 [&#39;007&#39;]
 
 ```
 ```
-&gt;&gt;&gt; re.findall(&#39;\d+&#39;, &#39;Agent 007&#39;)
+&gt;&gt;&gt; re.findall(r&#39;\d+&#39;, &#39;Agent 007&#39;)
 [&#39;007&#39;]
 
 ```
@@ -303,7 +303,7 @@ Specifying an optional character
 Example: find singular and plural occurances of a word
 
 ```python
-&gt;&gt;&gt; re.findall(&#39;eggs?&#39;, &#34;Don&#39;t put all eggs in one basket egghead&#34;)
+&gt;&gt;&gt; re.findall(r&#39;eggs?&#39;, &#34;Don&#39;t put all eggs in one basket egghead&#34;)
 [&#39;eggs&#39;, &#39;egg&#39;]
 
 ```
@@ -332,17 +332,17 @@ re.search = search(pattern, string, flags=0)
 Example
 
 ```
-&gt;&gt;&gt; re.search(&#39;([.\d]+) kcal&#39;, &#39;Energy: 1.23 kcal&#39;).group()
+&gt;&gt;&gt; re.search(r&#39;([.\d]+) kcal&#39;, &#39;Energy: 1.23 kcal&#39;).group()
 &#39;1.23 kcal&#39;
 
 ```
 ```
-&gt;&gt;&gt; re.search(&#39;([.\d]+) kcal&#39;, &#39;Energy: 1.23 kcal&#39;).group(1)
+&gt;&gt;&gt; re.search(r&#39;([.\d]+) kcal&#39;, &#39;Energy: 1.23 kcal&#39;).group(1)
 &#39;1.23&#39;
 
 ```
 ```
-&gt;&gt;&gt; re.search(&#39;([.\d]+) kcal&#39;, &#39;Energy: 1.23 kcal&#39;).groups()
+&gt;&gt;&gt; re.search(r&#39;([.\d]+) kcal&#39;, &#39;Energy: 1.23 kcal&#39;).groups()
 (&#39;1.23&#39;,)
 
 ```
@@ -359,7 +359,7 @@ Optional matches
 * `|` has the meaning of logical OR in matches
 
 ```
-&gt;&gt;&gt; re.findall(&#39;cat|dog&#39;, &#39;raining cats and dogs&#39;)
+&gt;&gt;&gt; re.findall(r&#39;cat|dog&#39;, &#39;raining cats and dogs&#39;)
 [&#39;cat&#39;, &#39;dog&#39;]
 
 ```
@@ -438,6 +438,8 @@ name: summary
 * Predifined classes `\s` (white space), `\w` (alphanumemric), `\d` (digit)
 * Modifiers `^` (not), `+` (one or more), `*` (zero or more), `?` (zero or
 * one), `|` (or)
+* The default behaviour of a quantifier is to match as much as possible, a &#39;?&#39;
+  after a quantifier matches the minimum
 * Count: `{n}` (repeated `n` times)
 * `()` grouping matches for back referencing, grouped matches are referenced with `\1\, \2...`
 
