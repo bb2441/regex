@@ -28,6 +28,30 @@ name: regex
 * A mini programming language of its own
 * Use by many other "host" languages (e.g. Python Perl, PHP)
 
+---
+## Raw strings
+
+* Python strings with an r before the leading quotation mark are "raw",
+  interpreted literally
+
+~~~
+>>> print('hello\n')
+hello
+<BLANKLINE>
+>>> len('hello\n')
+6
+
+~~~
+~~~
+>>> print(r'hello\n')
+hello\n
+>>> len(r'hello\n')
+7
+
+~~~
+
+* Raw strings are often used in search patterns for regular expressions to
+  avoid conflict between different interpretations of characters
 
 ---
 name: re_module
@@ -42,9 +66,9 @@ Other resources: https://automatetheboringstuff.com/chapter7/
 
 Here: three functions
 
-* the `re.search` funtion
-* the `re.findall` funtion
-* the `re.sub` funtion
+* the `re.search` function
+* the `re.findall` function
+* the `re.sub` function
 
 
 ---
@@ -69,15 +93,15 @@ re.findall = findall(pattern, string, flags=0)
 
 ```
 
-* `re.findall` returns a list of matching substrings
+* `re.findall` returns a list of matching sub strings
 
 ```
 >>> import re
->>> re.findall('tic', 'tac toc')
+>>> re.findall(r'tic', 'tac toc')
 []
->>> re.findall('tac', 'tac toc')
+>>> re.findall(r'tac', 'tac toc')
 ['tac']
->>> re.findall('t[ao]c', 'tac toc')
+>>> re.findall(r't[ao]c', 'tac toc')
 ['tac', 'toc']
 
 ```
@@ -102,22 +126,22 @@ There are some macros for common classes
 * `\s` single space or tab
 
 ```
->>> re.findall(r'\d', 'Agent 007')
+>>> re.findall(r'\d', 'Agent 007')  # Find all digits
 ['0', '0', '7']
 
 ```
 ```
->>> re.findall(r'[^\d]', 'Agent 007')
+>>> re.findall(r'[^\d]', 'Agent 007')  # Find all non-digits
 ['A', 'g', 'e', 'n', 't', ' ']
 
 ```
 ```
->>> re.findall(r'\w', 'Agent 007')
+>>> re.findall(r'\w', 'Agent 007')  # Find all word characters
 ['A', 'g', 'e', 'n', 't', '0', '0', '7']
 
 ```
 ```
->>> re.findall(r'[^\w]', 'Agent 007')
+>>> re.findall(r'[^\w]', 'Agent 007')  # Find all non-word characters
 [' ']
 
 ```
@@ -132,18 +156,29 @@ Specifying a count: `{}`
 * `+`: any number greater than zero
 
 ```
->>> re.findall(r'\d{2}', 'Agent 007')
+>>> re.findall(r'\d{2}', 'Agent 007')  # Find all substrings with 2 digits
 ['00']
 
 ```
 ```
->>> re.findall(r'\d{1,3}', 'Agent 007')
+>>> re.findall(r'\d{1,3}', 'Agent 007')  # Find all substrings with 1-3 digits
 ['007']
 
 ```
 ```
->>> re.findall(r'\d+', 'Agent 007')
+>>> re.findall(r'\d+', 'Agent 007')  # Find all substrings with at least 1 digit
 ['007']
+
+```
+```
+>>> re.findall(r'.*\d', 'Agent 007')  # Find all substrings that end with a digit
+['Agent 007']
+
+```
+
+```
+>>> re.findall(r'.*?\d', 'Agent 007')  # same, non-greedy version
+['Agent 0', '0', '7']
 
 ```
 
@@ -159,9 +194,9 @@ the string and then continues with the `'7'`
 
 Specifying an optional character
 
-* `?`: previous charactar is optional
+* `?`: previous character is optional
 
-Example: find singular and plural occurances of a word
+Example: find singular and plural occurrences of a word
 
 ```python
 >>> re.findall(r'eggs?', "Don't put all eggs in one basket egghead")
@@ -296,10 +331,10 @@ name: summary
 ## Summary
 
 * `[]` character class
-* Predifined classes `\s` (white space), `\w` (alphanumemric), `\d` (digit)
+* Predefined classes `\s` (white space), `\w` (alphanumeric), `\d` (digit)
 * Modifiers `^` (not), `+` (one or more), `*` (zero or more), `?` (zero or
 * one), `|` (or)
-* The default behaviour of a quantifier is to match as much as possible, a '?'
+* The default behavior of a quantifier is to match as much as possible, a '?'
   after a quantifier matches the minimum
 * Count: `{n}` (repeated `n` times)
 * `()` grouping matches for back referencing, grouped matches are referenced with `\1\, \2...`
@@ -311,6 +346,6 @@ name: summary
 * `re.sub(pattern, repl, string)`:  substitutes matches of `pattern` in `string` with replacement string `repl`
 
 
-Cheet sheet: https://www.debuggex.com/cheatsheet/regex/python
+Cheat sheet: https://www.debuggex.com/cheatsheet/regex/python
 
 Web-tool for testing regex's: https://regex101.com/
